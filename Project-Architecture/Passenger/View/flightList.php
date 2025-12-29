@@ -1,17 +1,18 @@
 <?php
 session_start();
-$departure=$_REQUEST['departure'] ?? "";
-
-
-
-
-
 // Get the selected value from POST
-// $departure = $_POST['departure'] ?? '';
+ $departure = $_POST['departure'] ?? '';
+ $arrival = $_POST['arrival'] ?? '';
+ $class = $_POST['class'] ?? '';
+ $date = $_POST['dd'] ?? '';
 
 if($departure){
     echo "<h2>You selected: $departure</h2>";
     $_SESSION["departure"] = $departure;
+    $_SESSION["arrival"] = $arrival;
+    $_SESSION["class"] = $class;
+    $_SESSION["dd"] = $date;
+
 } else {
     echo "<h2>No departure selected!</h2>";
 }
@@ -46,13 +47,6 @@ if($departure){
             <input type="button" value="Flight-C &#10 Departure:12PM &#10 Arrival:2PM" style="width:200px" onclick="style='background-color:blue;width:250px'" ondblclick="style='background-color;lightgrey;width:200px'"> <br><br>
             <input type="button" value="Flight-D &#10 Departure:5PM &#10  Arrival:7AM" style="width:200px" onclick="style='background-color:blue;width:250px'" ondblclick="style='background-color;lightgrey;width:200px'"> <br><br>
        
-         <p id="a">
-         <?php 
-
-            echo "Departure:$departure";
-         ?>
-         </p>
-        
          <button type="button" style="background:lightblue;height:40px;width:200px;" onclick="window.location.href='chooseSeat.php'" >Next</button> <br><br>
          </div>
     </div>

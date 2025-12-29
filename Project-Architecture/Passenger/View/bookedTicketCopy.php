@@ -3,9 +3,9 @@
 session_start();
 
 // $departure=$_REQUEST['departure'] ?? "";
-$arrival=$_REQUEST['arrival'] ?? "";
-$class=$_REQUEST['class'] ?? "";
-$date=$_REQUEST['dd'] ?? "";
+$arrival=$_SESSION['arrival'] ?? "";
+$class=$_SESSION['class'] ?? "";
+$date=$_SESSION['dd'] ?? "";
 $departure =  $_SESSION["departure"];
 
 // if(isset($_POST['departure'])){
@@ -50,17 +50,29 @@ $user = $result->fetch_assoc();
     </head>
     <body>
         <div class="container">
-             <?php
+
+         <button type="button" onclick="window.location.href='payment.php'">
+    Back
+</button><br><br>
+
+    ID: <?php echo $user['id'];?><br><br>
+    NAME: <?php echo $user['name'];?><br><br>
+    EMAIL: <?php echo $user['email'];?><br><br>
+    PHONE NO.: <?php echo $user['phone'];?><br><br>
+    ROLE: <?php echo $user['role'];?><br><br>
+             <!-- <?php
           foreach($user as $column =>$value){
             echo "<br>$column : $value <br>";
           }
-          ?>
+          ?><br><br> -->
+          Passport Copy:<br><br>
+             <!-- <img src="<?php echo $user['filepath'];?>> -->
+         <img src="<?php echo $user['filepath'];?>" alt="" width="200" height="200"><br><br>
              <?php
-        
-          echo " Departure:$departure";
-          echo $arrival;
-          echo $class;
-          echo $date;
+          echo "Departure:$departure <br> <br>";
+          echo "Arrival :$arrival <br> <br>";
+          echo "Class: $class <br> <br>";
+          echo "Journey Date: $date <br>";
           ?>
     </div>
     </body>
