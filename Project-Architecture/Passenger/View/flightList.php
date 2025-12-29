@@ -1,0 +1,60 @@
+<?php
+session_start();
+$departure=$_REQUEST['departure'] ?? "";
+
+
+
+
+
+// Get the selected value from POST
+// $departure = $_POST['departure'] ?? '';
+
+if($departure){
+    echo "<h2>You selected: $departure</h2>";
+    $_SESSION["departure"] = $departure;
+} else {
+    echo "<h2>No departure selected!</h2>";
+}
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: lightgrey;
+        }
+        body {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container" >
+<button type="button" onclick="window.location.href='journeyDetails.php'" style="background:lightblue;text-align:left">
+    Back
+</button>
+<div style="text-align:center">
+            <h3>...Choose Your Flight...</h3>
+            <input type="button" value="Flight-A &#10 Departure:8AM &#10  Arrival:10AM" style="width:200px;" onclick="style='background-color:blue;width:250px'" ondblclick="style='background-color;lightgrey;width:200px'"><br><br>
+            <input type="button" value="Flight-B &#10 Departure:10AM &#10 Arrival:12PM " style="width:200px" onclick="style='background-color:blue;width:250px'" ondblclick="style='background-color;lightgrey;width:200px'"> <br><br>
+            <input type="button" value="Flight-C &#10 Departure:12PM &#10 Arrival:2PM" style="width:200px" onclick="style='background-color:blue;width:250px'" ondblclick="style='background-color;lightgrey;width:200px'"> <br><br>
+            <input type="button" value="Flight-D &#10 Departure:5PM &#10  Arrival:7AM" style="width:200px" onclick="style='background-color:blue;width:250px'" ondblclick="style='background-color;lightgrey;width:200px'"> <br><br>
+       
+         <p id="a">
+         <?php 
+
+            echo "Departure:$departure";
+         ?>
+         </p>
+        
+         <button type="button" style="background:lightblue;height:40px;width:200px;" onclick="window.location.href='chooseSeat.php'" >Next</button> <br><br>
+         </div>
+    </div>
+    </body>
+</html>
