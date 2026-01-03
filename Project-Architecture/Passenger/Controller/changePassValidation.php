@@ -28,4 +28,7 @@ if(count($error) > 0){
     }
      Header("Location: ..\View\changePassword.php");
 }
+
+
+
 ?>

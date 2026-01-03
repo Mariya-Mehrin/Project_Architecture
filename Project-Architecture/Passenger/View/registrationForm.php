@@ -1,28 +1,5 @@
 <?php
 session_start();
-// if($_SERVER["REQUEST_METHOD"]=="POST"){
-//     // echo "SUCCESSFUL";
-// }
-// if(isset($_POST['submit'])){
-//     Header("Location:loginForm.php");
-// }
-
-// if($_SERVER['REQUEST_METHOD']=="POST"){
-//     $name=$_POST['name'] ?? "";
-//     $password=$_POST['password'] ?? "";
-//     $role=$_POST['role'] ?? "";
-//     if($name == "Admin"){
-//         $_SESSION['name']="Admin";
-//         Header("Location:dashboard.php");
-//     }
-// }
-
-// $isLoggedIn = $_SESSION["isLoggedIn"] ?? false;
-// if ($isLoggedIn) {
-//     Header("Location: loginForm.php");
-// }
-
-
 $emailErr =  $_SESSION["emailErr"] ?? '';
 $passErr = $_SESSION['passwordErr'] ??'';
 $nameErr = $_SESSION['nameErr'] ??'';
@@ -48,28 +25,10 @@ unset($_SESSION["LoginErr"]);
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="../Public/css/Registration.css">
         <style>
-            .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            background-color: lightgrey;
-        }
-        body {
-            margin-left: 20%;
-            margin-right: 20%;
-        }
-        p{
-            color:red;
-        }
-        #input,#showName{
-            color:#36486e;
-        }
+            
         </style>
-        <!-- <script src="../Controller/registerValidation.js">
-            // onsubmit="return validAll()"
-        </script> -->
 
 <script src="..\Controller\Js\checkEmail.js"> 
 </script>

@@ -1,4 +1,4 @@
-.container {
+            .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 30px;
@@ -8,10 +8,4 @@
         body {
             margin-left: 20%;
             margin-right: 20%;
-        }
-        p{
-            color:red;
-        }
-        #input,#showName{
-            color:#36486e;
         }

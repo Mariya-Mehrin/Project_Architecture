@@ -9,27 +9,7 @@ $departure=$_SESSION['departure'] ?? "";
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            background-color: lightgrey;
-            text-align:center;
-        }
-        body {
-            margin-left: 20%;
-            margin-right: 20%;
-        }
-        button{
-            width:50px;
-        }
-        #b{
-            margin-left:-750px;
-            margin-top:0px
-        }
-        </style>
+        <link rel="stylesheet" href="../Public/css/ChooseSeat.css">
  </head>
     <body>
         

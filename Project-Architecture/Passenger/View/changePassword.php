@@ -1,40 +1,26 @@
-<?php
+ <?php
+ include "../Model/dataBaseConnection.php";
+ error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 $passErr=$_SESSION["passErr"] ?? "";
 $matchErr=$_SESSION["matchErr"] ?? "";
-//  $_SESSION["matchErr"]
-
-
-// if (isset($_GET['password'])) {
-//     $pass = htmlspecialchars($_GET['password']);
-//     echo "Received value: " . $pass;
-// } else {
-//     echo "No variable received.";
-// }
 $email = $_SESSION["email"] ??"";
-
-
+$db = new DatabaseConnection();
+    $connection = $db->openConnection();
+    $result = $db->checkExistingUser($connection, "users", $email);
+if(!$result || $result->num_rows ==0){
+    echo "User not found";
+    exit;
+ }
 ?>
  <html>
     <head>
-        <style>
-            .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            background-color: lightgrey;
-        }
-        body {
-            margin-left: 20%;
-            margin-right: 20%;
-        }
-        #show{
-            color:red;
-        }
-        </style>
+        <link rel="stylesheet" href="../Public/css/ChangePassword.css">
     </head>
     <body>
+        <form method="post" >
  <div class="container">
      <button type="button" onclick="window.location.href='dashboard.php'">
     Back
@@ -48,10 +34,10 @@ $email = $_SESSION["email"] ??"";
             <?php $passErr; ?><br>
             New Password:<br>
             <input type="text"  name="new" placeholder="********" >
-           <p> <?php $matchErr; ?></p>
+           <p id="matchErr"> <?php $matchErr; ?></p>
             Retype Password:<br>
-            <input type="text"  name="confirm" placeholder="********"><br>
-            <p><?php echo $matchErr ?? "No Error"; ?></p>
+            <input type="text"  id="confirm" name="confirm" placeholder="********"><br>
+            <p><?php echo $matchErr  ?></p>
              <br>
                 <input type="submit" id="Change" name="Change"/>
                 
@@ -60,4 +46,6 @@ $email = $_SESSION["email"] ??"";
 </div>
 </script>
 </body>
-</html>
+</html> 
+
+

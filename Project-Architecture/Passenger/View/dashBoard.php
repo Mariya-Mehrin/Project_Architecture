@@ -2,12 +2,6 @@
 <?php 
  include "../Model/dataBaseConnection.php";
 session_start();
-
-// $isLoggedIn = $_SESSION["isLoggedIn"] ?? false;
-// if (!$isLoggedIn) {
-//     Header("Location: loginForm.php");
-// }
-
 $email = $_SESSION["email"] ??"";
 $password=$_REQUEST["password"] ?? "";
 
@@ -30,60 +24,7 @@ $image="";
 
 <html>
     <head>
-        <style>
-            .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            background-color:#c1c6c7;
-        }
-        body {
-            margin-left: 20%;
-            margin-right: 20%;
-        }
-     #nav1{
-     height:250px;
-     width:130px;
-      background-color: #cfd3d4;
-     text-align: center;    
-     vertical-align: middle;
-     }
-     #nav2{
-        border:1px solid #9cb8cbff;
-        overflow:scroll;
-        height:500px;
-        width:300px;
-         background-color: #cfd3d4;
-     }
-     #nav3{ 
-        height:250px;
-        width:130px;
-         background-color: #cfd3d4;
-        text-align: center;    
-        vertical-align: middle;
-     }
-     #h2{
-        display:inline-block;
-     }
-     #td3{
-        height:50px;
-        weight:50px;
-        background:white;
-     }
-     img {
-  display: block;
-  margin: auto;
-}
-a:hover{
-  width:400px;
-}
-.b:hover{
-    transform:scale(1.1);
-}
-        </style>
-
-        
+        <link rel="stylesheet" href="../Public/css/DashBoard.css">
     </head>
 
 <body >
@@ -114,14 +55,14 @@ a:hover{
              <img class="pic" src="<?php echo $selectImage ?> "  style="height:100px;width:100px;border-radius:5000px;display:center" > 
 
  <button  type="button" style="margin-left:200px;font-weight:bold;height:15px;width:50px;font-size:10px" onclick="window.location.href='changePic.php'">Change</button>
-        
-       
-  <?php
-          foreach($user as $column =>$value){
-            echo "<br>$column : $value <br>";
-          }
-          ?>
-    
+
+<br><br><br>
+    ID: <?php echo $user['id'];?><br><br>
+    NAME: <?php echo $user['name'];?><br><br>
+    EMAIL: <?php echo $user['email'];?><br><br>
+    PHONE NO.: <?php echo $user['phone'];?><br><br>
+    ROLE: <?php echo $user['role'];?><br><br>
+     <img src="<?php echo $user['filepath'];?>" alt="" width="200" height="200"><br><br>
     </nav>
     </td>
     <tr>

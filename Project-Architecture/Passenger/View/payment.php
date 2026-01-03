@@ -5,19 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            background-color: lightgrey;
-        }
-        body {
-            margin-left: 20%;
-            margin-right: 20%;
-        }
-        </style>
+        <link rel="stylesheet" href="../Public/css/Payment.css">
     </head>
     <body>
         <div class="container">
