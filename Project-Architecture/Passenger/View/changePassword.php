@@ -9,6 +9,7 @@ $matchErr=$_SESSION["matchErr"] ?? "";
 $email = $_SESSION["email"] ??"";
 $oldPass=$_SESSION["oldPass"] ?? "";
 $confirmPass=$_SESSION["confirmPass"] ?? "";
+$updateResult=$_SESSION["updateResult"] ?? "";
 unset($_SESSION["matchErr"]);
 unset($_SESSION["oldPass"]);
 $db = new DatabaseConnection();
@@ -26,6 +27,8 @@ if(!$result || $result->num_rows ==0){
  <html>
     <head>
         <link rel="stylesheet" href="../Public/css/ChangePassword.css">
+        <script src="..\Controller\Js\checkPassword.js">
+</script>
     </head>
     <body>
  <div class="container">
@@ -46,13 +49,14 @@ if(!$result || $result->num_rows ==0){
              ?> </p>
             <br>
             New Password:<br>
-            <input type="text"  name="new" placeholder="********" >
+            <input type="text"  name="new" onkeyup="findExistingPassword()" >
            <?php $matchErr; ?>
-           <br> Retype Password:<br>
-            <input type="text"  id="confirm" name="confirm" placeholder="********"><br>
+           <br> Confirm Password:<br>
+            <input type="text"  id="confirm" name="confirm" onkeyup="findExistingPassword()"><br>
             <p><?php echo $matchErr  ?></p>
              <br>
                 <input type="submit" id="Change" name="Change"/>
+                <p><?php echo $updateResult; ?></p>
                 
 </fieldset>
 </form>

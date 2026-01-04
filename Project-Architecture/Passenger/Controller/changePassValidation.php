@@ -1,37 +1,46 @@
 <?php
+include "../Model/dataBaseConnection.php";
 session_start();
-$pass=$_REQUEST["old"]; // old pass
-$password=$_REQUEST["new"]; // new pass
-$p2=$_REQUEST["confirm"]; // confirm pass
 
-$error=[];
-
-if(isset($_POST['Change'])){
-
+if(isset($_POST["Change"])){
+    $oldPass=$_POST["old"];
+    $newPass=$_POST["new"];
+    $confirmPass=$_POST["confirm"];
     
-    $taka = htmlspecialchars($_POST['old']);
-      $error["pass"]=$taka;
-           $_SESSION["oldPass"] = $error["pass"];
-            Header("Location: ..\View\changePassword.php");
-if($password != $p2){
-     $error["password"]="Not Matched";
-}
-if(count($error) > 0){
-    
-    if($error["password"]){
-        $_SESSION["matchErr"] = $error["password"];
-        
+    $email=$_SESSION['email'];
+
+    $error=[];
+
+if( $newPass !=" " && $confirmPass !=" "){
+    if($newPass !=$confirmPass){
+        $error["password"]="Password not Matched!!";
     }
-     Header("Location: ..\View\changePassword.php");
-     
-}  
-else{
-    $error["password"]="Info required!";
-    $_SESSION['matchErr']=$error['password'];
-     Header("Location: ..\View\changePassword.php");
+
+    if(!empty($error)){
+        $_SESSION["matchErr"]=$error["password"];
+        Header("Location:../View/changePassword.php");
+        exit;
+    }
+
+    $db=new DatabaseConnection();
+    $connection=$db->openConnection();
+
+    if(!$connection){
+        die("DataBase connection failed!");
+    }
+
+    $rows=$db->updateUserPassword($connection,"users",$email,$newPass);
+
+    if($rows && $connection->affected_rows > 0){
+        $_SESSION["updateResult"]="Updated Successfully!";
+    }
+    else{
+        $_SESSION["updatedResult"]="Password not Matched!";
+    }
+
+    Header("Location:../View/changePassword.php");
+    exit;
 }
 }
-
-
-
 ?>
+

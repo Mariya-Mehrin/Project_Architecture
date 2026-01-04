@@ -1,16 +1,16 @@
 <?php
 include "../Model/dataBaseConnection.php";
-$password="";
-$password=$_POST["password"];
-
-if($password==""){
+$Password="";
+// $Password=$_POST["Password"];
+$Password = isset($_POST["Password"]) ? trim($_POST["Password"]) : "";
+if($Password==""){
     echo "Password Empty";
 }
 else{
 
     $connection=new DatabaseConnection();
     $conobj=$connection->openConnection();
-    $result=$connection->checkExistingUser($conobj,"users",$password);
+    $result=$connection->checkExistingUser($conobj,"users",$Password);
     if ($result->num_rows > 0)
     {
        echo "Password Already Used";

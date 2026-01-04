@@ -1,23 +1,24 @@
 <?php
 include "../Model/dataBaseConnection.php";
-$phone="";
-$phone=$_POST["phone"];
-
-if($phone==""){
+$Phone="";
+// $Phone=$_POST["phone"];
+$Phone = isset($_POST["phone"]) ? trim($_POST["phone"]) : "";
+if($Phone==" "){
     echo "Phone Number Empty";
 }
 else{
 
     $connection=new DatabaseConnection();
     $conobj=$connection->openConnection();
-    $result=$connection->checkExistingUser($conobj,"users",$phone);
+    $result=$connection->checkExistingUser($conobj,"users",$Phone);
     if ($result->num_rows > 0)
     {
-       echo "Phone Number Already Used";
+        echo "Unique Phone Number";
     }
 
     else{
-            echo "Unique Phone Number";
+           
+            echo "Phone Number Already Used";
     }
     $connection->closeConnection($conobj);
 }

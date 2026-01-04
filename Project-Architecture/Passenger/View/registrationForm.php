@@ -30,18 +30,17 @@ unset($_SESSION["LoginErr"]);
             
         </style>
 
-<script src="..\Controller\Js\checkEmail.js"> 
-</script>
+<script src="..\Controller\Js\checkEmail.js"> </script>
+<script src="..\Controller\Js\checkPassword.js"> </script>
 
-<script src="..\Controller\Js\checkPhoneNo.js">
-</script>
+<script src="..\Controller\Js\checkPhoneNo.js"></script>
 
 <script src="..\Controller\Js\registerValidation.js"></script>
 
 </head>
 <body>
     <div class="container">
-    <form method="post" action="..\Controller\registerValidation.php" enctype="multipart/form-data" onsubmit="validAll()">
+    <form method="post"  action="return validAll()" enctype="multipart/form-data" >
         <fieldset>
             <legend>Registration Form</legend>
             Name:<br>
@@ -55,10 +54,10 @@ unset($_SESSION["LoginErr"]);
             <p id="erroremail" ></p>
 
             Password:<br>
-            <input type="password" id="password" name="password" placeholder="Enter password..." onkeyup="findExistingPassword()" >
+            <input type="password" id="Password" name="Password" placeholder="Enter password..." onkeyup="findExistingPassword()" >
             <?php echo "<span style='color:red;'> $passErr </span>" ?>
             <p id="errorpass" ></p>
-            <!-- <P id="passErr"></P> -->
+             <P id="passErr"></P>
             <br><br>
             Phone No:<br>
             <input type="number" id="phone" name="phone" placeholder="Enter your phone number.." onkeyup="findExistingPhoneNo()" >
