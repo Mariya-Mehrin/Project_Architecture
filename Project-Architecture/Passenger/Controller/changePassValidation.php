@@ -6,17 +6,13 @@ $p2=$_REQUEST["confirm"]; // confirm pass
 
 $error=[];
 
-// if (isset($_GET['pass'])) {
-//     $password = htmlspecialchars($_GET['pass']);
-//     echo "Received value: " . $password;
-// } else {
-//     echo "No variable received.";
-// }
+if(isset($_POST['Change'])){
 
-// if($password !=$pass){
-//    $error["pass"] ="Wrong password";
-// }
-
+    
+    $taka = htmlspecialchars($_POST['old']);
+      $error["pass"]=$taka;
+           $_SESSION["oldPass"] = $error["pass"];
+            Header("Location: ..\View\changePassword.php");
 if($password != $p2){
      $error["password"]="Not Matched";
 }
@@ -27,6 +23,13 @@ if(count($error) > 0){
         
     }
      Header("Location: ..\View\changePassword.php");
+     
+}  
+else{
+    $error["password"]="Info required!";
+    $_SESSION['matchErr']=$error['password'];
+     Header("Location: ..\View\changePassword.php");
+}
 }
 
 

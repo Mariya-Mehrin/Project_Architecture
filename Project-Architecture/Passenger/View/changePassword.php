@@ -7,20 +7,27 @@ session_start();
 $passErr=$_SESSION["passErr"] ?? "";
 $matchErr=$_SESSION["matchErr"] ?? "";
 $email = $_SESSION["email"] ??"";
+$oldPass=$_SESSION["oldPass"] ?? "";
+$confirmPass=$_SESSION["confirmPass"] ?? "";
+unset($_SESSION["matchErr"]);
+unset($_SESSION["oldPass"]);
 $db = new DatabaseConnection();
     $connection = $db->openConnection();
     $result = $db->checkExistingUser($connection, "users", $email);
 if(!$result || $result->num_rows ==0){
-    echo "User not found";
-    exit;
+     Header("Location: ..\View\LoginForm.php");
  }
+
+ $user = $result->fetch_assoc();
+
+
+
 ?>
  <html>
     <head>
         <link rel="stylesheet" href="../Public/css/ChangePassword.css">
     </head>
     <body>
-        <form method="post" >
  <div class="container">
      <button type="button" onclick="window.location.href='dashboard.php'">
     Back
@@ -29,13 +36,19 @@ if(!$result || $result->num_rows ==0){
     <form method="post" action="..\Controller\changePassValidation.php">
         <fieldset>
             <legend>Change Password</legend>
+             <p><?php $oldPass; ?></p>
              Current passsword:<br>
-            <input type="text" name="old" placeholder="">
-            <?php $passErr; ?><br>
+            <input type="text" name="old" id="old" placeholder="">
+             <p > <?php $user['password'];
+             if($oldPass != $user['password'] && $oldPass !=null){
+                echo "Wrong password";
+             }
+             ?> </p>
+            <br>
             New Password:<br>
             <input type="text"  name="new" placeholder="********" >
-           <p id="matchErr"> <?php $matchErr; ?></p>
-            Retype Password:<br>
+           <?php $matchErr; ?>
+           <br> Retype Password:<br>
             <input type="text"  id="confirm" name="confirm" placeholder="********"><br>
             <p><?php echo $matchErr  ?></p>
              <br>
