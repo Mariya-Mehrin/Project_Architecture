@@ -70,6 +70,7 @@ document.getElementById("showFile").innerHTML="File Path:"+file;
 // Header("Location:")
 return;
 }
+
 function validAll(){
     return false;
     validName();

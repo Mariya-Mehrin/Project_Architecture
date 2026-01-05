@@ -43,6 +43,9 @@ unset($_SESSION["LoginErr"]);
     <form method="post"  action="return validAll()" enctype="multipart/form-data" >
         <fieldset>
             <legend>Registration Form</legend>
+
+            <a href="loginForm.php">Login</a><br><br>
+
             Name:<br>
             <input type="text" id="name" name="name" placeholder="Enter your name...">
             <?php echo "<span style='color:red;'> $nameErr </span>" ?>

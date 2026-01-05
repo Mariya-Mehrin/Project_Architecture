@@ -33,16 +33,15 @@ class DatabaseConnection{
 
     function checkExistingUser($connection, $tableName, $email){
         $sql = "SELECT * FROM ".$tableName." WHERE email='".$email."'";
+        $ticket = $connection->query($sql);
+        return $ticket;
+    }
+ function addTicket($connection,$tableName,$seatNo, $status,$passengerId,$flightId){
+        $sql = "INSERT INTO ".$tableName." (seatNo,status, passengerId,flightId) VALUES ('".$seatNo."', '".$status."','".$passengerId."','".$flightId."')";
         $result = $connection->query($sql);
         return $result;
     }
-// function updateUserPassword($connection, $tableName, $email, $newPassword) {
-//     $sql = "UPDATE ".$tableName."
-//             SET password='".$newPassword."'
-//             WHERE email='".$email."'";
 
-//     return $connection->query($sql);
-// }
 function updateUserPassword($connection,$tableName,$email,$newPassword){
     $sql="UPDATE " . $tableName ." SET password='".$newPassword."' WHERE email='".$email."'";
     return $connection->query($sql);

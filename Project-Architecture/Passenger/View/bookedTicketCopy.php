@@ -16,8 +16,22 @@ if(!$result || $result->num_rows ==0){
     echo "User not found";
     exit;
  }
+ 
 $user = $result->fetch_assoc();
 
+
+$flight_id=$_SESSION['flight_id'] ?? "";
+
+    // echo "Selected Flight ID: " . $flight_id;
+
+    $seatNo=$_SESSION['seatNo'] ?? "";
+
+    // echo "Selected seatNo2: " . $seatNo;
+
+     $db = new DatabaseConnection();
+    $connection = $db->openConnection();
+    $status="Booked";
+   $ticket = $db->addTicket($connection, "tickets",$seatNo, $status,$user['id'],$flight_id);
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +50,7 @@ $user = $result->fetch_assoc();
     EMAIL: <?php echo $user['email'];?><br><br>
     PHONE NO.: <?php echo $user['phone'];?><br><br>
     ROLE: <?php echo $user['role'];?><br><br>
-    
+  
          <img src="<?php echo $user['filepath'];?>" alt="" width="200" height="200"><br><br>
              <?php
           echo "Departure:$departure <br> <br>";

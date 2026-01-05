@@ -24,9 +24,9 @@ session_start();
             <option value=""></option>
             <option value="Dhaka">Dhaka</option>
             <option value="Sylhet">Sylhet</option>
-            <option value="Jessore">Jessore</option>
+            <!-- <option value="Jessore">Jessore</option>
             <option value="Saidpur">Saidpur</option>
-            <option value="Barishal">Barishal</option>
+            <option value="Barishal">Barishal</option> -->
 
            </select>
             </div>
@@ -36,9 +36,9 @@ session_start();
             <option value=""></option>
             <option value="Dhaka">Dhaka</option>
             <option value="Sylhet" >Sylhet</option>
-            <option  value="Jessore">Jessore</option>
+            <!-- <option  value="Jessore">Jessore</option>
             <option value="Saidpur">Saidpur</option>
-            <option value="Barishal">Barishal</option>
+            <option value="Barishal">Barishal</option> -->
 
            </select>
     </div>
@@ -79,18 +79,6 @@ session_start();
         </fieldset>
        
     </form>
-<script>
-//     let myForm = document.getElementById('myForm');
-// myForm.action = 'bookedTicketCopy.php';
-// myForm.target = 'iframe1';
-// myForm.submit();
-
-// myForm.action = 'url2.php';
-// myForm.target = 'iframe2';
-// myForm.submit();
-</script>
-
-
 </div>
 </body>
 </html>
