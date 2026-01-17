@@ -43,8 +43,8 @@ if(count($errors) > 0){
 $values["email"] = $email;
 $_SESSION["previousValues"] = $values;
 
-Header("Location: ..\View\loginForm.php");
-
+Header("Location: ../View/loginForm.php");
+exit;
 }
 else{
     // $data = ["email"=> "test@test.com","password"=> 'password'];
@@ -58,7 +58,8 @@ else{
         $_SESSION["email"] =$email;
         if($user["role"]=="Passenger"){
         $_SESSION["isLoggedIn"] =true;
-        Header("Location: ...\Passenger\View\dashboard.php");
+        Header("Location: ../View/dashboard.php");
+        exit;
         }
     }
 
@@ -71,9 +72,10 @@ else{
     
     else{
       $_SESSION["LoginErr"] = "Email or password is incorrect";  
-      Header("Location: ..\View\loginForm.php");
+      Header("Location: ../View/loginForm.php");
       unset($_SESSION["emailErr"]);
       unset($_SESSION["passwordErr"]);
+      exit;
     }
 
 

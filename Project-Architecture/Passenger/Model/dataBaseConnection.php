@@ -24,6 +24,10 @@ class DatabaseConnection{
         $result = $connection->query($sql);
         return $result;
     }
+function addProfilePicture($connection,$tableName,$email, $profilePicture){
+         $sql="UPDATE " . $tableName ." SET profilePicture='".$profilePicture."' WHERE email='".$email."'";
+    return $connection->query($sql);
+    }
 
     function signin($connection, $tableName, $email, $password){
         $sql = "SELECT * FROM ".$tableName." WHERE email='".$email."' AND password='".$password."'";
@@ -33,9 +37,16 @@ class DatabaseConnection{
 
     function checkExistingUser($connection, $tableName, $email){
         $sql = "SELECT * FROM ".$tableName." WHERE email='".$email."'";
+        $user = $connection->query($sql);
+        return $user;
+    }
+
+     function checkBookedTicket($connection, $tableName, $seatNo){
+        $sql = "SELECT * FROM ".$tableName." WHERE seatNo='".$seatNo."'";
         $ticket = $connection->query($sql);
         return $ticket;
     }
+
  function addTicket($connection,$tableName,$seatNo, $status,$passengerId,$flightId){
         $sql = "INSERT INTO ".$tableName." (seatNo,status, passengerId,flightId) VALUES ('".$seatNo."', '".$status."','".$passengerId."','".$flightId."')";
         $result = $connection->query($sql);

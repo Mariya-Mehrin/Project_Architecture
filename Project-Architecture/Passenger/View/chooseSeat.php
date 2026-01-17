@@ -1,7 +1,21 @@
 <?php
+include "../Model/dataBaseConnection.php";
 session_start();
 
  $departure=$_SESSION['departure'] ?? "";
+ $class = $_SESSION['class'] ?? '';
+ if($class=="Economy"){
+  $price="5000";
+ }
+ if($class=="Business"){
+  $price="10000";
+ }
+ if($class=="Economy"){
+  $price="5000";
+ }
+ if($class=="Premium"){
+  $price="15000";
+ }
 
 if (isset($_POST['flight_id']) && $_POST['flight_id'] != '') {
     $_SESSION['flight_id'] = $_POST['flight_id'];
@@ -19,30 +33,76 @@ if (isset($_POST['flight_id']) && $_POST['flight_id'] != '') {
          <button type="button" id="b" onclick="window.location.href='flightList.php'">
     Back
 </button><br>
-Price:  <input type="text" value="5000" style="display:center"><br><br><br>
-        <button id="btn1" onclick="enableBtn1()" ondblclick="disableBtn1() ">1</button>
+Price:  <input type="text" value="<?php echo $price ?>" style="display:center"><br><br><br>
+<?php 
+$seatNo=1;
+$is_button_disabled1=false;
+$is_button_disabled2=false;
+$is_button_disabled3=false;
+$is_button_disabled4=false;
+$is_button_disabled5=false;
+$is_button_disabled6=false;
+$is_button_disabled7=false;
+$is_button_disabled8=false;
+$db = new DatabaseConnection();
+    $connection = $db->openConnection();
+    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
+$user = $result->fetch_assoc();
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled1 = true;
+}
+$seatNo=2;
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled2 = true;
+}
+$seatNo=3;
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled3 = true;
+}
+$seatNo=4;
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled4 = true;
+}
+$seatNo=5;
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled5 = true;
+}
+$seatNo=6;
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled6= true;
+}
+$seatNo=7;
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled7 = true;
+}
+$seatNo=8;
+if($user["seatNo"]==$seatNo){
+  $is_button_disabled8 = true;
+}
+  ?>
+        <button id="btn1" <?php if ($is_button_disabled1) { echo 'disabled'; }?> onclick="enableBtn1()" ondblclick="disableBtn1() ">1</button>
         &nbsp;&nbsp;&nbsp;
-        <button id="btn2" onclick="enableBtn2()" ondblclick="disableBtn2()">2</button>
+        <button id="btn2" <?php if ($is_button_disabled2) { echo 'disabled'; }?> onclick="enableBtn2()" ondblclick="disableBtn2()">2</button>
         &nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;
-        <button id="btn5" onclick="enableBtn5()" ondblclick="disableBtn5()">5</button>
+        <button id="btn5" <?php if ($is_button_disabled5) { echo 'disabled'; }?> onclick="enableBtn5()" ondblclick="disableBtn5()">5</button>
         &nbsp;&nbsp;&nbsp;
-        <button id="btn6" onclick="enableBtn6()" ondblclick="disableBtn6()">6</button>
+        <button id="btn6" <?php if ($is_button_disabled6) { echo 'disabled'; }?> onclick="enableBtn6()" ondblclick="disableBtn6()">6</button>
 
         <br><br>
 
-        <button id="btn3" onclick="enableBtn3()" ondblclick="disableBtn3()">3</button>
+        <button id="btn3" <?php if ($is_button_disabled3) { echo 'disabled'; }?> onclick="enableBtn3()" ondblclick="disableBtn3()">3</button>
         &nbsp;&nbsp;&nbsp;
-        <button id="btn4" onclick="enableBtn4()" ondblclick="disableBtn4()">4</button>
-        &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;
+        <button id="btn4" <?php if ($is_button_disabled4) { echo 'disabled'; }?> onclick="enableBtn4()" ondblclick="disableBtn4()">4</button>
         &nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;
-        <button id="btn7" onclick="enableBtn7()" ondblclick="disableBtn7()">7</button>
         &nbsp;&nbsp;&nbsp;
-        <button id="btn8" onclick="enableBtn8()" ondblclick="disableBtn8()">8</button>
+        &nbsp;&nbsp;&nbsp;
+        <button id="btn7" <?php if ($is_button_disabled7) { echo 'disabled'; }?> onclick="enableBtn7()" ondblclick="disableBtn7()">7</button>
+        &nbsp;&nbsp;&nbsp;
+        <button id="btn8" <?php if ($is_button_disabled8) { echo 'disabled'; }?> onclick="enableBtn8()" ondblclick="disableBtn8()">8</button>
 
         <br><br><br>
         <input type="hidden" name="seatNo" id="seatNo">

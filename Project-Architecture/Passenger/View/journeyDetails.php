@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+$d1=date('Y-m-d');
+$d2=date('Y-m-d' , strtotime('+10days'));
 ?>
 
 <!DOCTYPE html>
@@ -51,10 +52,10 @@ session_start();
             <option value="Premium" >Premium</option>
            </select>
            <br><br>
-           Journey Date:<input type="date" id="dd" name="dd">
+           Journey Date:<input type="date" id="dd" name="dd" min="<?php echo $d1; ?>" max="<?php echo $d2; ?>" >
            <br><br>
             <p id="nextErr"></p>
-            <button type="submit" id="" onclick="nextBtn()">Next</button>
+            <button type="submit" id=""  onclick="nextBtn()">Next</button>
            <script>
 
          function nextBtn(){
