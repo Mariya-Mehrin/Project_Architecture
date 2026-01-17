@@ -5,6 +5,16 @@ session_start();
 $email = $_REQUEST["email"];
 $password = $_REQUEST["password"];
 
+$db = new DatabaseConnection();
+    $connection = $db->openConnection();
+    $result = $db->checkExistingUser($connection, "users", $email);
+if(!$result || $result->num_rows ==0){
+    echo "User not found";
+    exit;
+ }
+$user = $result->fetch_assoc();
+
+
 $errors = [];
 $values = [];
 
@@ -46,8 +56,10 @@ else{
 
     if($result->num_rows  == 1){
         $_SESSION["email"] =$email;
+        if($user["role"]=="Passenger"){
         $_SESSION["isLoggedIn"] =true;
-        Header("Location: ..\View\dashboard.php");
+        Header("Location: ...\Passenger\View\dashboard.php");
+        }
     }
 
     // if($email == $data["email"] && $password == $data["password"]){

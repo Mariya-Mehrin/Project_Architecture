@@ -62,7 +62,8 @@ $image="";
     EMAIL: <?php echo $user['email'];?><br><br>
     PHONE NO.: <?php echo $user['phone'];?><br><br>
     ROLE: <?php echo $user['role'];?><br><br>
-     <img src="<?php echo $user['filepath'];?>" alt="" width="200" height="200"><br><br>
+    <?php echo $user['filepath'];?>
+     <img src="<?php echo $user['filepath'];?>" alt="Picture" width="200" height="200"><br><br>
     </nav>
     </td>
     <tr>

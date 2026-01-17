@@ -19,7 +19,6 @@ unset($_SESSION["LoginErr"]);
 </head>
 <body>
 <div class="container">
-<!-- <pre><?php echo $previousValues["email"]; ?></pre> -->
 <form method="post" action="..\Controller\loginValidation.php" >
     <fieldset>
         <legend>Login Form</legend>
