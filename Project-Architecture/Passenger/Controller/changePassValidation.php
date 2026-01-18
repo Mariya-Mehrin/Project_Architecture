@@ -12,10 +12,13 @@ if(isset($_POST["Change"])){
     $error=[];
 
 if( $newPass !=" " && $confirmPass !=" "){
+    if(strlen($newPass !=8) || strlen($confirmPass !=8)){
+        $error["password"]="Password Must Be contain 8 Character.";
+    }
     if($newPass !=$confirmPass){
         $error["password"]="Password not Matched!!";
     }
-
+    
     if(!empty($error)){
         $_SESSION["matchErr"]=$error["password"];
         Header("Location:../View/changePassword.php");

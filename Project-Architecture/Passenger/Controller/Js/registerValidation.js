@@ -73,12 +73,12 @@ return;
 
 function validAll(){
     return false;
-    validName();
+    // validName();
     validEmail();
-     validPass();
-     validPhone();
-     validFile();
-     validRole();
+    //  validPass();
+    //  validPhone();
+    //  validFile();
+    //  validRole();
     if(!valid){
         return false;
     }else {

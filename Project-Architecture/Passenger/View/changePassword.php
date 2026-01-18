@@ -47,12 +47,11 @@ if(!$result || $result->num_rows ==0){
                 echo "Wrong password";
              }
              ?> </p>
-            <br>
             New Password:<br>
-            <input type="text"  name="new" onkeyup="findExistingPassword()" >
+            <input type="text"  name="new"  >
            <?php $matchErr; ?>
            <br> Confirm Password:<br>
-            <input type="text"  id="confirm" name="confirm" onkeyup="findExistingPassword()"><br>
+            <input type="text"  id="confirm" name="confirm" ><br>
             <p><?php echo $matchErr  ?></p>
              <br>
                 <input type="submit" id="Change" name="Change"/>
@@ -65,4 +64,6 @@ if(!$result || $result->num_rows ==0){
 </body>
 </html> 
 
-
+<?php
+unset($_SESSION["updateResult"]);
+?>

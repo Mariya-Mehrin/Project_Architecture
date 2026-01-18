@@ -1,10 +1,6 @@
 <?php
 session_start();
-
-// Clear only the departure session
-unset($_SESSION['departure']);
-
-// Redirect back to journeyDetails.php
+//unset($_SESSION['departure']);
 header("Location: journeyDetails.php");
 exit;
 ?>
