@@ -48,34 +48,51 @@ $db = new DatabaseConnection();
     $connection = $db->openConnection();
     $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
 $user = $result->fetch_assoc();
+if($result && $result->num_rows > 0){
 if($user["seatNo"]==$seatNo){
   $is_button_disabled1 = true;
 }
-$seatNo=2;
-if($user["seatNo"]==$seatNo){
+}
+$seatNo2=2;
+    $result2 = $db->checkBookedTicket($connection, "tickets", $seatNo2);
+    $user2 = $result2->fetch_assoc();
+    if($result2 && $result2->num_rows > 0){
+    if($user2["seatNo"]==$seatNo2){
   $is_button_disabled2 = true;
 }
-$seatNo=3;
-if($user["seatNo"]==$seatNo){
+    }
+$seatNo3=3;
+    $result3 = $db->checkBookedTicket($connection, "tickets", $seatNo3);
+    $user3 = $result3->fetch_assoc();
+    if($result3 && $result3->num_rows > 0){
+if($user3["seatNo"]==$seatNo3){
   $is_button_disabled3 = true;
 }
-$seatNo=4;
-if($user["seatNo"]==$seatNo){
+    }
+$seatNo4=4;
+    $result4 = $db->checkBookedTicket($connection, "tickets", $seatNo4);
+    $user4 = $result4->fetch_assoc();
+    if($result4 && $result4->num_rows > 0)
+if($user4["seatNo"]==$seatNo4){
   $is_button_disabled4 = true;
 }
 $seatNo=5;
+    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
 if($user["seatNo"]==$seatNo){
   $is_button_disabled5 = true;
 }
 $seatNo=6;
+    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
 if($user["seatNo"]==$seatNo){
   $is_button_disabled6= true;
 }
 $seatNo=7;
+    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
 if($user["seatNo"]==$seatNo){
   $is_button_disabled7 = true;
 }
 $seatNo=8;
+    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
 if($user["seatNo"]==$seatNo){
   $is_button_disabled8 = true;
 }

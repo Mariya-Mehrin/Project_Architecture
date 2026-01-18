@@ -1,10 +1,33 @@
 <?php
 session_start();
- $departure = $_POST['departure'] ?? '';
+$departure = $_POST['departure'] ?? '';
  $arrival = $_POST['arrival'] ?? '';
  $class = $_POST['class'] ?? '';
  $date = $_POST['dd'] ?? '';
 
+
+
+
+// Expiration for cookies
+$expire = time() + 300; // 5 minutes
+
+// Get values from POST if submitted, else from cookies
+$departure = $_POST['departure'] ?? $_COOKIE['departure'] ?? "";
+$arrival   = $_POST['arrival'] ?? $_COOKIE['arrival'] ?? "";
+$dd        = $_POST['dd'] ?? $_COOKIE['dd'] ?? "";
+$class     = $_POST['class'] ?? $_COOKIE['class'] ?? "";
+
+// If POST exists, set/update cookies
+if (!empty($_POST)) {
+    setcookie("departure", $departure, $expire, "/");
+    setcookie("arrival", $arrival, $expire, "/");
+    setcookie("dd", $dd, $expire, "/");
+    setcookie("class", $class, $expire, "/");
+}
+
+// Now $departure, $arrival, $dd, $class are always safe to use
+
+ 
 if($departure){
     echo "<h2>You selected: $departure</h2>";
     $_SESSION["departure"] = $departure;
