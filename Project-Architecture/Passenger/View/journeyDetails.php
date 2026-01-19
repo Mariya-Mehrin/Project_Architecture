@@ -215,7 +215,7 @@ $class     = $_COOKIE['class'] ?? "";
 
 // Save form submission into cookies (5 minutes)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $expire = time() + 300; // 5 minutes
+    $expire = time() + 600; // 5 minutes
     setcookie("departure", $_POST['departure'], $expire, "/");
     setcookie("arrival", $_POST['arrival'], $expire, "/");
     setcookie("dd", $_POST['dd'], $expire, "/");

@@ -47,11 +47,31 @@ function addProfilePicture($connection,$tableName,$email, $profilePicture){
         return $ticket;
     }
 
- function addTicket($connection,$tableName,$seatNo, $status,$passengerId,$flightId){
-        $sql = "INSERT INTO ".$tableName." (seatNo,status, passengerId,flightId) VALUES ('".$seatNo."', '".$status."','".$passengerId."','".$flightId."')";
+ function checkBookingHistory($connection, $tableName, $id){
+        $sql = "SELECT * FROM ".$tableName." WHERE passengerId='".$id."'";
         $result = $connection->query($sql);
         return $result;
     }
+
+    function searchTicket($connection, $tableName, $id){
+        $sql = "SELECT * FROM ".$tableName." WHERE id='".$id."'";
+        $result = $connection->query($sql);
+        return $result;
+    }
+
+//  function addTicket($connection,$tableName,$seatNo, $status,$passengerId,$flightId){
+//         $sql = "INSERT INTO ".$tableName." (seatNo,status, passengerId,flightId) VALUES ('".$seatNo."', '".$status."','".$passengerId."','".$flightId."')";
+//         $result = $connection->query($sql);
+//         return $result;
+//     }
+function addTicket($connection,$tableName,$seatNo, $status,$passengerId,$flightId,$price,$class){
+$connection->query("DELETE FROM tickets WHERE expire_at <=NOW()");
+    $sql = "INSERT INTO $tableName (seatNo, status, passengerId, flightId,price,class, expire_at)
+             VALUES ('".$seatNo."', '".$status."', '".$passengerId."', '".$flightId."','".$price."', '".$class."', NOW() + INTERVAL 1 DAY )";
+    $result=$connection->query($sql);
+return $result;
+}
+
 
 function updateUserPassword($connection,$tableName,$email,$newPassword){
     $sql="UPDATE " . $tableName ." SET password='".$newPassword."' WHERE email='".$email."'";
@@ -59,6 +79,12 @@ function updateUserPassword($connection,$tableName,$email,$newPassword){
 }
 function editProfile($connection,$tableName,$email,$newEmail,$newName,$newRole){
     $sql="UPDATE " . $tableName ." SET email='".$newEmail."', name='".$newName."', role='".$newRole."' WHERE email='".$email."'";
+    return $connection->query($sql);
+}
+function deleteTicket($connection,$tableName, $id) {
+
+    $sql = " DELETE FROM " . $tableName . " WHERE id = $id ";
+
     return $connection->query($sql);
 }
 

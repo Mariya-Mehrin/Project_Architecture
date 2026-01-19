@@ -50,7 +50,7 @@ unset($_SESSION["LoginErr"]);
             <input type="text" id="name" name="name" placeholder="Enter your name..." required>
             <?php echo "<span style='color:red;'> $nameErr </span>" ?>
             <P id="nameErr"></P>
-            <br><br>
+            
              Email:<br>
             <input type="text" id="email" name="email"  onkeyup="findExistingEmail()"  placeholder="Enter email..." required>
             <?php echo "<span style='color:red;'> $emailErr </span>" ?>
@@ -61,13 +61,13 @@ unset($_SESSION["LoginErr"]);
             <?php echo "<span style='color:red;'> $passErr </span>" ?>
             <p id="errorpass" ></p>
              <P id="passErr"></P>
-            <br><br>
+            <p style="color:blue;">Password Must be 8 Character!!</p>
             Phone No:<br>
             <input type="text" id="phone" name="phone" placeholder="Enter your phone number.." onkeyup="findExistingPhoneNo()" required>
             <?php echo "<span style='color:red;'> $phoneErr </span>" ?>
             <p id="errorphoneno" ></p>
+            <p style="color:blue;">Phone Number Must be 11 Character!!</p>
             <!-- <P id="phoneErr"></P> -->
-            <br><br>
             Passport Copy:<br><input type="file" id="fileupload" name="fileupload" required>
             <?php echo "<span style='color:red;'> $fileErr </span>" ?>
             <!-- <P id="fileErr"></P> -->

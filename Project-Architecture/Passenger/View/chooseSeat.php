@@ -33,8 +33,9 @@ if (isset($_POST['flight_id']) && $_POST['flight_id'] != '') {
          <button type="button" id="b" onclick="window.location.href='flightList.php'">
     Back
 </button><br>
-Price:  <input type="text" value="<?php echo $price ?>" style="display:center"><br><br><br>
-<?php 
+Price:  <input type="text" id="price" name="price" value="<?php echo $price ?>" style="display:center"><br><br><br>
+<?php
+
 $seatNo=1;
 $is_button_disabled1=false;
 $is_button_disabled2=false;
@@ -72,30 +73,43 @@ if($user3["seatNo"]==$seatNo3){
 $seatNo4=4;
     $result4 = $db->checkBookedTicket($connection, "tickets", $seatNo4);
     $user4 = $result4->fetch_assoc();
-    if($result4 && $result4->num_rows > 0)
+    if($result4 && $result4->num_rows > 0){
 if($user4["seatNo"]==$seatNo4){
   $is_button_disabled4 = true;
 }
-$seatNo=5;
-    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
-if($user["seatNo"]==$seatNo){
+    }
+$seatNo5=5;
+    $result5 = $db->checkBookedTicket($connection, "tickets", $seatNo5);
+    $user5 = $result5->fetch_assoc();
+    if($result5 && $result5->num_rows > 0){
+if($user5["seatNo"]==$seatNo5){
   $is_button_disabled5 = true;
 }
-$seatNo=6;
-    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
-if($user["seatNo"]==$seatNo){
+    }
+$seatNo6=6;
+    $result6 = $db->checkBookedTicket($connection, "tickets", $seatNo6);
+    $user6 = $result6->fetch_assoc();
+    if($result6 && $result6->num_rows > 0){
+if($user6["seatNo"]==$seatNo6){
   $is_button_disabled6= true;
 }
-$seatNo=7;
-    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
-if($user["seatNo"]==$seatNo){
+    }
+$seatNo7=7;
+    $result7 = $db->checkBookedTicket($connection, "tickets", $seatNo7);
+    $user7 = $result7->fetch_assoc();
+    if($result7 && $result7->num_rows > 0){
+if($user7["seatNo"]==$seatNo7){
   $is_button_disabled7 = true;
 }
-$seatNo=8;
-    $result = $db->checkBookedTicket($connection, "tickets", $seatNo);
-if($user["seatNo"]==$seatNo){
+    }
+$seatNo8=8;
+    $result8 = $db->checkBookedTicket($connection, "tickets", $seatNo8);
+    $user8 = $result8->fetch_assoc();
+    if($result8 && $result8->num_rows > 0){
+if($user8["seatNo"]==$seatNo8){
   $is_button_disabled8 = true;
 }
+    }
   ?>
         <button id="btn1" <?php if ($is_button_disabled1) { echo 'disabled'; }?> onclick="enableBtn1()" ondblclick="disableBtn1() ">1</button>
         &nbsp;&nbsp;&nbsp;
@@ -227,7 +241,7 @@ if($user["seatNo"]==$seatNo){
 </script>
 
 
- <button type="submit" id="next" style="background:lightblue;height:30px;width:200px;"  disabled>Next</button> <br><br>
+ <button type="submit" id="next" name="next" style="background:lightblue;height:30px;width:200px;"  disabled>Next</button> <br><br>
          <!-- <?php 
 
             echo "Departure:$departure";

@@ -13,6 +13,8 @@ if(!$result || $result->num_rows ==0){
     exit;
  }
 $user = $result->fetch_assoc();
+//$_SESSION['user_id'] = $user['id'];
+$_SESSION['user_id']=$user['id'];
 
 if (isset($_FILES["link"])) {
     $image = $_FILES["link"];
@@ -92,6 +94,10 @@ $image="";
 <button type="button" onclick="window.location.href='editProfile.php'" style="background:lightblue;width:125px" >
     Edit Profile
 </button>
+<div style="height:10px"></div>
+<button type="button" onclick="window.location.href='bookingHistory.php'" style="background:lightblue;width:125px" >
+    Booking History
+</button>
         </nav>
     </td>
     </tr>
@@ -101,3 +107,6 @@ $image="";
         </form>
 </body>
 </html>
+<?php
+$connection->query("DELETE FROM tickets WHERE expire_at <=NOW()");
+?>

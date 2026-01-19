@@ -129,7 +129,7 @@ if ($departure == "Dhaka") {
     let b1 = document.getElementById("btn2");
     b1.style.backgroundColor = "blue";
     b1.style.width = "200px";
-     document.getElementById("flight_id").value=3;
+     document.getElementById("flight_id").value=2;
   }
 
   function disableBtn3() {
@@ -147,7 +147,7 @@ if ($departure == "Dhaka") {
     let b1 = document.getElementById("btn3");
     b1.style.backgroundColor = "blue";
     b1.style.width = "200px";
-    document.getElementById("flight_id").value=4;
+    document.getElementById("flight_id").value=3;
   }
 
   function disableBtn4() {
@@ -165,7 +165,7 @@ if ($departure == "Dhaka") {
     let b1 = document.getElementById("btn4");
     b1.style.backgroundColor = "blue";
     b1.style.width = "200px";
-    document.getElementById("flight_id").value=5;
+    document.getElementById("flight_id").value=4;
   }
 </script>
 
