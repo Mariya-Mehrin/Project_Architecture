@@ -46,9 +46,9 @@ $db = new DatabaseConnection();
     }
 ?>
 
-<button type="button" onclick="window.location.href='feedbackAndRating.php'" style="background:lightblue;text-align:left">
+<!-- <button type="button" onclick="window.location.href='feedbackAndRating.php'" style="background:lightblue;text-align:left">
     Change Response
-</button><br><br><br>
+</button><br><br><br> -->
              </fieldset>
 </div>
 </body>

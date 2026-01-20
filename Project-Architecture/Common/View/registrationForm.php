@@ -60,7 +60,7 @@ unset($_SESSION["LoginErr"]);
              <P id="passErr"></P>
             <p style="color:blue;">Password Must be 8 Character!!</p>
             Phone No:<br>
-            <input type="text" id="phone" name="phone" placeholder="Enter your phone number.." onkeyup="findExistingPhoneNo()" required>
+            <input type="number" id="phone" name="phone" placeholder="Enter your phone number.."  required>
             <?php echo "<span style='color:red;'> $phoneErr </span>" ?>
             <p id="errorphoneno" ></p>
             <p style="color:blue;">Phone Number Must be 11 Character!!</p>

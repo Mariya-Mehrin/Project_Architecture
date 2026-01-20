@@ -12,7 +12,7 @@ $file = $_FILES["fileupload"];
 $errors = [];
 $values = [];
 
-if(strlen($password)!=8 && strlen($phone) !=11){
+if(strlen($password)!=8 ){
     $errors["phone"] = "Phone number invalid!";
 
        Header("Location: ../../Common/View/registrationForm.php");

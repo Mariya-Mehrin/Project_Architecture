@@ -7,6 +7,7 @@ if(isset($_POST["change"])){
    $newEmail=$_POST["email"];
    $newName=$_POST["name"];
    $newRole=$_POST["role"];
+   $phone=$_POST["phone"];
     $emailRegex = "/^\S+@\S+\.\S+$/";
     $error=[];
 
@@ -27,7 +28,7 @@ if( !empty(trim($newEmail))){
         die("DataBase connection failed!");
     }
 
-    $rows=$db->editProfile($connection,"users",$email,$newEmail, $newName,$newRole);
+    $rows=$db->editProfile($connection,"users",$email,$newEmail, $newName,$phone);
 
     if($rows){
         $_SESSION["updateResult"]="Updated Successfully!";

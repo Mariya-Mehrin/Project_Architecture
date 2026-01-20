@@ -82,8 +82,8 @@ function updateUserPassword($connection,$tableName,$email,$newPassword){
     $sql="UPDATE " . $tableName ." SET password='".$newPassword."' WHERE email='".$email."'";
     return $connection->query($sql);
 }
-function editProfile($connection,$tableName,$email,$newEmail,$newName,$newRole){
-    $sql="UPDATE " . $tableName ." SET email='".$newEmail."', name='".$newName."', role='".$newRole."' WHERE email='".$email."'";
+function editProfile($connection,$tableName,$email,$newEmail,$newName,$phone){
+    $sql="UPDATE " . $tableName ." SET email='".$newEmail."', name='".$newName."', phone='".$phone."' WHERE email='".$email."'";
     return $connection->query($sql);
 }
 function deleteTicket($connection,$tableName, $id) {
