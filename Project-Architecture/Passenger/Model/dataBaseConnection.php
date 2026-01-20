@@ -58,12 +58,17 @@ function addProfilePicture($connection,$tableName,$email, $profilePicture){
         $result = $connection->query($sql);
         return $result;
     }
+function searchFlight($connection, $tableName, $id){
+        $sql = "SELECT * FROM ".$tableName." WHERE id='".$id."'";
+        $result = $connection->query($sql);
+        return $result;
+    }
+    function searchReviews($connection, $tableName, $passengerId){
+        $sql = "SELECT * FROM ".$tableName." WHERE passengerId='".$passengerId."'";
+        $result = $connection->query($sql);
+        return $result;
+    }
 
-//  function addTicket($connection,$tableName,$seatNo, $status,$passengerId,$flightId){
-//         $sql = "INSERT INTO ".$tableName." (seatNo,status, passengerId,flightId) VALUES ('".$seatNo."', '".$status."','".$passengerId."','".$flightId."')";
-//         $result = $connection->query($sql);
-//         return $result;
-//     }
 function addTicket($connection,$tableName,$seatNo, $status,$passengerId,$flightId,$price,$class){
 $connection->query("DELETE FROM tickets WHERE expire_at <=NOW()");
     $sql = "INSERT INTO $tableName (seatNo, status, passengerId, flightId,price,class, expire_at)
@@ -87,6 +92,23 @@ function deleteTicket($connection,$tableName, $id) {
 
     return $connection->query($sql);
 }
+
+function addReview($connection,$tableName,$passengerId,$flightId,$feedback,$rating){
+   $sql = "INSERT INTO ".$tableName." (passengerId,flightId,feedback,rating) VALUES ('".$passengerId."','".$flightId."', '".$feedback."','".$rating."')";
+        $result = $connection->query($sql);
+        return $result;
+}
+
+//sql injection
+ function InsertData($connection,$table,$passengerId,$flightId,$feedback,$rating)
+    {
+        $sql = "INSERT INTO reviews (passengerId,flightId,feedback,rating) VALUES(?,?,?,?)";
+        $stmt=$connection->prepare($sql); 
+        $stmt->bind_param("iisi",$passengerId,$flightId,$feedback,$rating);
+        $result = $stmt->execute();
+        return $result;
+    
+    }
 
     function closeConnection($connection){
         $connection->close();

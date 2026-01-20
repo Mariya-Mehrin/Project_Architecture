@@ -11,7 +11,7 @@ unset($_SESSION["LoginErr"]);
 
 ?>
 
-
+<!DOCTYPE html>
 <html>
 <head>
         <link rel="stylesheet" href="../Public/css/Login.css">

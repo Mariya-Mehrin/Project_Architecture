@@ -1,0 +1,31 @@
+ .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: lightgrey;
+        }
+        body {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+        p{
+            color:blue;
+        }
+  .stars {
+      font-size: 2rem;
+    }
+
+    .stars input {
+      display: none;
+    }
+
+    .stars label {
+      cursor: pointer;
+      color:grey;
+      margin-right: 5px;
+    }
+
+    .stars input:checked + label {
+      color: blue;
+    }

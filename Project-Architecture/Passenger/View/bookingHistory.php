@@ -37,8 +37,6 @@ $db = new DatabaseConnection();
 
             echo "<form method='post' style='margin-top:5px;'>";
     echo "<input type='hidden' name='ticket_id' value='" . $ticket['id'] . "'>";
-    //echo "<button type='submit' name='cancel_ticket'onclick="window.location.href='refundDetails.php'">Cancel Ticket</button>";
-//echo '<button type="button" name="cancel_ticket" onclick="window.location.href=\'refundDetails.php\'">Cancel Ticket</button>';
 echo '<button type="button" onclick="window.location.href=\'refundDetails.php?ticket_id='.$ticket['id'].'\'">
             Cancel Ticket
           </button>';
