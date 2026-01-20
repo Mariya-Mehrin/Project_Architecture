@@ -15,7 +15,7 @@ $values = [];
 if(strlen($password)!=8 && strlen($phone) !=11){
     $errors["phone"] = "Phone number invalid!";
 
-       Header("Location: ../View/registrationForm.php");
+       Header("Location: ../../Common/View/registrationForm.php");
 }
 else{
     $path = "";
@@ -31,11 +31,11 @@ else{
     $result = $db->allUser($connection, "users",$name, $email, $password,$phone,$role, $path);
 
     if($result){
-        Header("Location: ../View/loginForm.php");
+        Header("Location: ../../Common/View/loginForm.php");
 
     }else{
       $_SESSION["LoginErr"] = "Failed to sign up, please try again later";  
-   Header("Location: ../View/registrationForm.php");
+   Header("Location: ../../Common/View/registrationForm.php");
       unset($_SESSION["emailErr"]);
       unset($_SESSION["passwordErr"]);
     }  

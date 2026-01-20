@@ -25,22 +25,19 @@ unset($_SESSION["LoginErr"]);
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../Public/css/Registration.css">
+        <link rel="stylesheet" href="../../Passenger/Public/css/Registration.css">
         <style>
             
         </style>
 
-<script src="..\Controller\Js\checkEmail.js"> </script>
-<!-- <script src="..\Controller\Js\checkPassword.js"> </script>
+<script src="../../Passenger/Controller/Js/checkEmail.js"> </script>
 
-<script src="..\Controller\Js\checkPhoneNo.js"></script> -->
-
-<script src="..\Controller\Js\registerValidation.js"></script>
+<script src="../../Passenger/Controller/Js/registerValidation.js"></script>
 
 </head>
 <body>
     <div class="container">
-    <form method="post"  action="..\Controller\registerValidation.php" enctype="multipart/form-data" >
+    <form method="post"  action="../../Passenger/Controller/registerValidation.php" enctype="multipart/form-data" >
         <fieldset>
             <legend>Registration Form</legend>
 

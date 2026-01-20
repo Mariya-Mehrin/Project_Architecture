@@ -14,15 +14,16 @@ unset($_SESSION["LoginErr"]);
 <!DOCTYPE html>
 <html>
 <head>
-        <link rel="stylesheet" href="../Public/css/Login.css">
+        <link rel="stylesheet" href="../../Passenger/Public/css/Login.css">
 
 </head>
 <body>
 <div class="container">
-<form method="post" action="..\Controller\loginValidation.php" >
+<form method="post" action="../../Passenger/Controller/loginValidation.php" >
     <fieldset>
         <legend>Login Form</legend>
-   
+   <a href="registrationForm.php">Register</a><br><br>
+
          Email:<br><input type="text" name="email" id="email" value="<?php echo $previousValues["email"] ?? '' ?>"/>
    
      <p> <?php echo $emailErr;?></p>
