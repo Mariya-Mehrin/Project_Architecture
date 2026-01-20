@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="navbar">
-        <h3>Plane Ticket Management - Employee Panel</h3>
+        <h3>Airline Management System- Employee Panel</h3>
         <div>
             <span>Welcome, <?php echo $_SESSION['username']; ?></span>
             <a href="../index.php?logout=true" class="logout-btn">Logout</a>

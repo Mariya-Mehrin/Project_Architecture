@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Plane Ticket System</title>
+    <title>Login - Airline Management System</title>
     <link rel="stylesheet" href="../assets/style.css">
     <script src="../assets/script.js"></script>
 </head>
