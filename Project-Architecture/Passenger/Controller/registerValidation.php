@@ -12,11 +12,11 @@ $file = $_FILES["fileupload"];
 $errors = [];
 $values = [];
 
-    $phone = $_POST['phone'];
-    if (!preg_match('/^\d{11}$/', $phone)) {
+    // $phone = $_POST['phone'];
+    // if (!preg_match('/^\d{11}$/', $phone)) {
       
-        $errors["phone"] = "Phone must be contain 11 digit !";
-    }
+    //     $errors["phone"] = "Phone must be contain 11 digit !";
+    // }
 if (!preg_match('/^\S+@\S+\.\S+$/', $email)) {
       
         $errors["email"] = "invalid email!";
@@ -35,9 +35,9 @@ if(count($errors) > 0){
     if($errors["password"]){
         $_SESSION["passwordErr"] = $errors["password"];
     }
-    if($errors["phone"]){
-        $_SESSION["phoneErr"] = $errors["phone"];
-    }
+    // if($errors["phone"]){
+    //     $_SESSION["phoneErr"] = $errors["phone"];
+    // }
 
 Header("Location: ../View/registrationForm.php");
 exit;

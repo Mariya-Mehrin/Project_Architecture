@@ -1,18 +1,20 @@
 <?php
 include "../Model/dataBaseConnection.php";
 session_start();
-
+$flightId=$_POST["flight_id"] ?? "";
 $db = new DatabaseConnection();
 $connection = $db->openConnection();
 
 
 if (isset($_POST['next'])) {
     if (!empty($_POST['seatNo'])) {
-        $_SESSION['seatNo'] = $_POST['seatNo']; 
+        $_SESSION['seatNo'] = $_POST['seatNo'];
         header("Location: payment.php");       
         exit();
     }
 }
+
+echo $_SESSION['flight_id'] ;
 ?>
 
 <!DOCTYPE html>

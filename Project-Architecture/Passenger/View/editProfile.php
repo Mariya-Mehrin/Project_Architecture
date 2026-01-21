@@ -27,16 +27,7 @@ unset($_SESSION["emailErr"]);
             <input type="text" id="email" name="email" onkeyup="findExistingEmail()" placeholder="Change Email Address..." ><br>
             <p id="erroremail" ></p>
             <?php echo $regex; ?>
-            <!-- Password:<br>
-            <input type="password" id="password" name="password" placeholder="**********" disabled><br><br> -->
-            <!-- Role:<br>
-           <select id="role" name="role" required>
-            <option>Select</option>
-            <option>Admin</option>
-            <option>Passenger</option>
-            <option>Employee</option>
-           </select>
-        <br><br> -->
+           
         Phone:<br><input type="number" id="phone" name="phone" placeholder="Change Phone No. ..." ><br><br>
 
                 <button type="submit" id="change" name="change" >Done</button>

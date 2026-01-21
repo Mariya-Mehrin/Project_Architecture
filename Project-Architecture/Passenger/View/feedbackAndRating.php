@@ -6,6 +6,8 @@ session_start();
 $db = new DatabaseConnection();
     $connection = $db->openConnection();
     $result = $db->checkBookingHistory($connection, "tickets", $id);
+    $ticket = $result->fetch_assoc();
+    //echo $ticket['flightId'];
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         foreach($_POST as $key => $value){
             if(!empty($key) && strpos($key, "feedback_") !==false){
@@ -54,6 +56,20 @@ $trackFlights[]=$flightId;
 $db = new DatabaseConnection();
     $connection = $db->openConnection();
     $result2 = $db->searchFlight($connection, "flights", $ticket['flightId']);
+
+   // $result2 = $db->searchFlight($connection, "flights", $ticket['flightId']);
+
+// if ($result2 && $result2->num_rows > 0) {
+//     $flight = $result2->fetch_assoc();
+//     $name = $flight['name'];
+
+//    // echo "<div style='border:1px solid #000; margin:10px; padding:10px'>";
+//     echo "<h4>FLIGHT NAME: $name</h4>";
+//    // echo "<h6>FLIGHT ID: $flightId</h6>";
+    
+// }
+
+
     $flight=$result2->fetch_assoc();
     $name=$flight['name'];
 

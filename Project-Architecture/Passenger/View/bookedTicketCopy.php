@@ -34,7 +34,7 @@ $user = $result->fetch_assoc();
 
 $flight_id=$_SESSION['flight_id'] ?? "";
 
-     //echo "Selected Flight ID: " . $flight_id;
+     echo "Selected Flight ID: " . $flight_id;
     $seatNo=$_SESSION['seatNo'] ?? "";
 
     // echo "Selected seatNo2: " . $seatNo;
@@ -65,7 +65,7 @@ $flight_id=$_SESSION['flight_id'] ?? "";
     PHONE NO.: <?php echo $user['phone'];?><br><br>
     ROLE: <?php echo $user['role'];?><br><br>
   
-         <img src="<?php echo $user['filepath'];?>" alt="" width="200" height="200"><br><br>
+         <iframe src="<?php echo $user['filepath'];?>" alt="" width="200" height="200"></iframe><br><br>
              <?php
           echo "Departure:$departure <br> <br>";
           echo "Arrival :$arrival <br> <br>";

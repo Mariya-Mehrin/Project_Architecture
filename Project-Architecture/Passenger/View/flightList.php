@@ -4,20 +4,12 @@ $departure = $_POST['departure'] ?? '';
  $arrival = $_POST['arrival'] ?? '';
  $class = $_POST['class'] ?? '';
  $date = $_POST['dd'] ?? '';
-
-
-
-
-// Expiration for cookies
-$expire = time() + 300; // 5 minutes
-
-// Get values from POST if submitted, else from cookies
+//  $flightId=$_POST["flight_id"] ?? "";
+$expire = time() + 300; 
 $departure = $_POST['departure'] ?? $_COOKIE['departure'] ?? "";
 $arrival   = $_POST['arrival'] ?? $_COOKIE['arrival'] ?? "";
 $dd        = $_POST['dd'] ?? $_COOKIE['dd'] ?? "";
 $class     = $_POST['class'] ?? $_COOKIE['class'] ?? "";
-
-// If POST exists, set/update cookies
 if (!empty($_POST)) {
     setcookie("departure", $departure, $expire, "/");
     setcookie("arrival", $arrival, $expire, "/");
@@ -25,7 +17,13 @@ if (!empty($_POST)) {
     setcookie("class", $class, $expire, "/");
 }
 
-// Now $departure, $arrival, $dd, $class are always safe to use
+
+if (isset($_POST['next'])) {
+    $flightId=$_POST["flight_id"];
+        // header("Location: chooseSeat.php");       
+        // exit();
+       $_SESSION["flight_id"]=$_POST["flight_id"];
+    }
 
  
 if($departure){

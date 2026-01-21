@@ -1,7 +1,7 @@
 <?php
 session_start();
 $flight_id=$_SESSION['flight_id'] ?? "";
-
+//$id=$_POST["flight_id"];
 if (isset($_POST['seatNo']) && $_POST['seatNo'] != '') {
     $_SESSION['seatNo'] = $_POST['seatNo'];
      echo "Selected seat No.: " . $_SESSION['seatNo'];
