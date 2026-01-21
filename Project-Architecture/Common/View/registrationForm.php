@@ -59,12 +59,17 @@ unset($_SESSION["LoginErr"]);
             <p id="errorpass" ></p>
              <P id="passErr"></P>
             <p style="color:blue;">Password Must be 8 Character!!</p>
-            Phone No:<br>
+            <!-- Phone No:<br>
             <input type="number" id="phone" name="phone" placeholder="Enter your phone number.."  required>
-            <?php echo "<span style='color:red;'> $phoneErr </span>" ?>
+           // <?php echo "<span style='color:red;'> $phoneErr </span>" ?>
             <p id="errorphoneno" ></p>
-            <p style="color:blue;">Phone Number Must be 11 Character!!</p>
+            <p style="color:blue;">Phone Number Must be 11 Character!!</p> -->
             <!-- <P id="phoneErr"></P> -->
+
+            Phone Number: <br>
+    <input type="text" name="phone" placeholder="Enter phone number" required>
+    <br><br>
+
             Passport Copy:<br><input type="file" id="fileupload" name="fileupload" required>
             <?php echo "<span style='color:red;'> $fileErr </span>" ?>
             <!-- <P id="fileErr"></P> -->

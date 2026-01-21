@@ -12,10 +12,35 @@ $file = $_FILES["fileupload"];
 $errors = [];
 $values = [];
 
-if(strlen($password)!=8 ){
-    $errors["phone"] = "Phone number invalid!";
+    $phone = $_POST['phone'];
+    if (!preg_match('/^\d{11}$/', $phone)) {
+      
+        $errors["phone"] = "Phone must be contain 11 digit !";
+    }
+if (!preg_match('/^\S+@\S+\.\S+$/', $email)) {
+      
+        $errors["email"] = "invalid email!";
+    }
 
-       Header("Location: ../../Common/View/registrationForm.php");
+if(strlen($password)!=8 ){
+    $errors["password"] = "Password must be 8 character!";
+
+       Header("Location: ../View/registrationForm.php");
+}
+if(count($errors) > 0){
+    if($errors["email"]){
+        $_SESSION["emailErr"] = $errors["email"];
+    }
+
+    if($errors["password"]){
+        $_SESSION["passwordErr"] = $errors["password"];
+    }
+    if($errors["phone"]){
+        $_SESSION["phoneErr"] = $errors["phone"];
+    }
+
+Header("Location: ../View/registrationForm.php");
+exit;
 }
 else{
     $path = "";
@@ -31,15 +56,16 @@ else{
     $result = $db->allUser($connection, "users",$name, $email, $password,$phone,$role, $path);
 
     if($result){
-        Header("Location: ../../Common/View/loginForm.php");
+        Header("Location: ../View/loginForm.php");
 
     }else{
       $_SESSION["LoginErr"] = "Failed to sign up, please try again later";  
-   Header("Location: ../../Common/View/registrationForm.php");
+   Header("Location: ../View/registrationForm.php");
       unset($_SESSION["emailErr"]);
       unset($_SESSION["passwordErr"]);
     }  
  }
+
 session_unset();
 }
 ?>

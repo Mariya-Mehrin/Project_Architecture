@@ -4,7 +4,14 @@ session_start();
 
 $email = $_REQUEST["email"];
 $password = $_REQUEST["password"];
-
+$errors = [];
+$values = [];
+if(empty($email) && empty($password)){
+$_SESSION["LoginErr"]="Empty Field";
+Header("Location: ../View/loginForm.php");
+exit;
+}
+else{
 $db = new DatabaseConnection();
     $connection = $db->openConnection();
     $result = $db->checkExistingUser($connection, "users", $email);
@@ -15,8 +22,7 @@ if(!$result || $result->num_rows ==0){
 $user = $result->fetch_assoc();
 
 
-$errors = [];
-$values = [];
+
 
 if(!$email){
 $errors["email"] = "Email field is required";
@@ -43,7 +49,7 @@ if(count($errors) > 0){
 $values["email"] = $email;
 $_SESSION["previousValues"] = $values;
 
-Header("Location: ../../Common/View/loginForm.php");
+Header("Location: ../View/loginForm.php");
 exit;
 }
 else{
@@ -72,7 +78,7 @@ else{
     
     else{
       $_SESSION["LoginErr"] = "Email or password is incorrect";  
-      Header("Location: .../Passenger/View/loginForm.php");
+      Header("Location: ../View/loginForm.php");
       unset($_SESSION["emailErr"]);
       unset($_SESSION["passwordErr"]);
       exit;
@@ -80,6 +86,7 @@ else{
 
 
     
+}
 }
 
 ?>
