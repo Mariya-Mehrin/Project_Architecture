@@ -14,7 +14,9 @@ if (isset($_POST['next'])) {
     }
 }
 
-echo $_SESSION['flight_id'] ;
+echo $_POST["flight_id"] ;
+$id= $_POST["flight_id"] ;
+ $_SESSION['flight_id'] = $_POST['flight_id'];
 ?>
 
 <!DOCTYPE html>
