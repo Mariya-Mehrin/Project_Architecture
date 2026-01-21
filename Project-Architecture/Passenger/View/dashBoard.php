@@ -10,6 +10,7 @@ $password=$_REQUEST["password"] ?? "";
     $result = $db->checkExistingUser($connection, "users", $email);
 if(!$result || $result->num_rows ==0){
     echo "User not found";
+     Header("Location: ../View/loginForm.php");
     exit;
  }
 $user = $result->fetch_assoc();

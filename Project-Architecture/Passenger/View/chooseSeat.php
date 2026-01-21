@@ -1,6 +1,8 @@
 <?php
 include "../Model/dataBaseConnection.php";
 session_start();
+
+
 $flightId=$_POST["flight_id"] ?? "";
 $db = new DatabaseConnection();
 $connection = $db->openConnection();
